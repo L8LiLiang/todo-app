@@ -40,7 +40,7 @@ todoForm.addEventListener('submit', event => {
 
 function addTodo(text) {
   const listItem = document.createElement('li');
-  listItem.className = 'todo-item';
+  listItem.className = 'todo-item animate';
 
   const textElement = document.createElement('p');
   textElement.className = 'todo-text';
@@ -58,5 +58,8 @@ function addTodo(text) {
   });
 
   listItem.append(textElement, deleteButton);
+  listItem.addEventListener('animationend', () => {
+    listItem.classList.remove('animate');
+  }, { once: true });
   todoList.appendChild(listItem);
 }
